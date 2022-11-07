@@ -19,7 +19,6 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         const loadEvent = new CustomEvent(id + "load", { content: contentDiv });
         if (node.classList.contains("active")) {
-            console.log("what")
             LoadContent(contentDiv);
             document.dispatchEvent(loadEvent);
         } else {

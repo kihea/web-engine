@@ -51,7 +51,6 @@ const resizable = function (resizer) {
   // that's triggered when user drags the resizer
   const mouseDownHandler = function (e) {
     // Get the current mouse position
-    console.log("test")
     prevSibling = resizer.previousElementSibling;
     nextSibling = resizer.nextElementSibling;
     x = e.clientX;

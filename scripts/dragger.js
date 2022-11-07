@@ -31,7 +31,6 @@ dropzones.forEach((elem) => {
         const tabBar = elem;
         if (tabBar === previousTabBar || !tabBar.classList.contains('tab-area')) { return; }
         const data = JSON.parse(event.dataTransfer.getData("text"));
-        console.log(data);
         const id = data.id;
         const content = data.content ? document.getElementById(data.content) : null;
         const element = document.getElementById(id);
