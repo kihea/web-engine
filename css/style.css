@@ -1,0 +1,91 @@
+
+body {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+  background-color: #1f1f1f;
+}
+
+.view-grid {
+  display: flex;
+
+  /* Misc */
+  border: none;
+  height: 100%;
+  width: 100%;
+}
+.resizer {
+  z-index: 999;
+  background-color: #1b1b1b;
+}
+.resizer[data-direction='horizontal'] {
+  cursor: ew-resize;
+  height: 100%;
+  width: 5px;
+}
+.resizer[data-direction='vertical'] {
+  cursor: ns-resize;
+  height: 5px;
+  width: 100%;
+}
+.view {
+  position: relative;
+  border: 0px solid #1f1f1f;
+  min-width: fit-content;
+  display:flex;
+}
+
+.view .tab-area {
+  background-color: #161616;
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  z-index: 2;
+
+  min-height: max-content;
+}
+.view .tab-area button {
+  background-color: inherit;
+  border-radius: 3px 3px 0px 0px;
+  color: white;
+  position: absolute;
+  border: none;
+  outline: none;
+  width: 60px;
+  height: 100%;
+}
+.view .tab-area button.active {
+  background-color: #1f1f1f;
+  border-bottom: 1px solid #ccc;
+  z-index: 100;
+}
+.view .content-area {
+  position: absolute;
+  color: white;
+  width: 100%;
+  margin-top: 30px;
+  height: 100%;
+  display: none;
+}
+
+.stack {
+  /* Take the remaining width */
+  /*flex: 1;*/
+  /* Misc */
+  display: flex;
+  flex-direction: column;
+}
+.stack[data-direction='horizontal'] {
+
+  flex-direction: row;
+  
+}
+#scene {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: block;
+}
