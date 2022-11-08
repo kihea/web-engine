@@ -25,7 +25,10 @@ function reorderTabs(tabList) {
 }
 dropzones.forEach((elem) => {
     elem.addEventListener('dragover', function (event) {
-        event.preventDefault();
+        if (event.target.classList.contains("tab")) {
+            event.preventDefault();
+        }
+        
     });
     elem.addEventListener('drop', function (event) {
         const tabBar = elem;

@@ -102,5 +102,8 @@ document.addEventListener('Sceneload', function() {
     });
     document.addEventListener('tabmoved', function() {
         app._OnWindowResize();
+    });
+    window.addEventListener('resize', function() {
+        app._OnWindowResize();
     })
 })
