@@ -1,0 +1,22 @@
+{
+  "name": "engine",
+  "version": "1.0.0",
+  "description": "KDot Engine in the browser",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kihea/web-engine.git"
+  },
+  "author": "Kihea Adams-Wilson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kihea/web-engine/issues"
+  },
+  "homepage": "https://github.com/kihea/web-engine#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
