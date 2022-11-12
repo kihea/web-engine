@@ -2,13 +2,19 @@ const tabs = document.querySelectorAll('.tab');
 function getActiveTab(tabbar) {
     return tabbar.getElementByClassName('active');
 }
-function LoadContent(content) {
+function LoadContent(content, eventName) {
     if (!content) { return; }
+    eventName = eventName || content.id + "load";
     content.style.display = "block";
+    const loadEvent = new CustomEvent(eventName, { content: content });
+    document.dispatchEvent(loadEvent);
 }
-function UnloadContent(content) {
+function UnloadContent(content, eventName) {
     if (!content) { return; }
+    eventName = eventName || content.id + "unload";
     content.style.display = "none";
+    const unloadEvent = new CustomEvent(eventName, { content: content });
+    document.dispatchEvent(unloadEvent);
 }
 window.addEventListener('DOMContentLoaded', function () {
     tabs.forEach((node) => {
@@ -17,12 +23,10 @@ window.addEventListener('DOMContentLoaded', function () {
         if (!contentDiv) {
             return;
         }
-        const loadEvent = new CustomEvent(id + "load", { content: contentDiv });
         if (node.classList.contains("active")) {
-            LoadContent(contentDiv);
-            document.dispatchEvent(loadEvent);
+            LoadContent(contentDiv, `Initial${id}load`);
         } else {
             UnloadContent(contentDiv);
         }
     })
-})
+});

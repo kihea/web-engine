@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Game Engine</title>
 </head>
@@ -12,23 +12,26 @@
   <div class="view-grid">
     <div class="view">
       <div class="tab-area">
+        <button class="tab active" draggable="true" content="Scene" id="mainScene">Scene</button>
 
       </div>
-      <div class="content-area">
-
-      </div>
+      <div class="content-area" id="Scene">
+        <canvas id="scene"></canvas>
+        <script type="module" src="../scripts/scene.js"></script>
+    </div>
     </div>
     <div class="resizer" data-direction="horizontal"></div>
     <div class="stack">
       <div class="stack" data-direction="horizontal">
         <div class="view">
           <div class="tab-area">
-            <button class="tab active" draggable="true" content="Scene" id="mainScene">Scene</button>
-            <button class="tab" draggable="true" content="Two">Two</button>
+            <button class="tab active" draggable="true" content="Explorer" id="explorer">Two</button>
           </div>
-          <div class="content-area" id="Scene">
-              <canvas id="scene"></canvas>
-              <script type="module" src="./scripts/scene.js"></script>
+          <div class="content-area" id="Explorer">
+            
+            <ul id="explorer">
+
+            </ul>
           </div>
         </div>
         <div class="resizer" data-direction="horizontal"></div>
@@ -54,9 +57,10 @@
 
   </div>
   </div>
-  <script type="text/javascript" src="./index.js"></script>
-  <script type="text/javascript" src="./scripts/dragger.js"></script>
-  <script type="text/javascript" src="./scripts/resizer.js"></script>
+  <script type="text/javascript" src="../scripts/index.js"></script>
+  <script type="text/javascript" src="../scripts/dragger.js"></script>
+  <script type="text/javascript" src="../scripts/resizer.js"></script>
+  
 </body>
 
 </html>

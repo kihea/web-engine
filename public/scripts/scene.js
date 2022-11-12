@@ -3,7 +3,6 @@ import * as THREE from "https://unpkg.com/three@0.138.0/build/three.module.js";
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/jsm/controls/OrbitControls.js';
 
 const canvas = document.getElementById("scene");
-
 class Window {
     constructor() {
         this.init();
@@ -24,9 +23,24 @@ class Window {
 
 
 
-        /*window.addEventListener('resize', () => {
+        window.addEventListener('resize', () => {
             this._OnWindowResize();
-        }, false);*/
+        }, false);
+        document.addEventListener('viewresize', function() {
+            if (canvas.parentElement.style.display == "none") {
+                return;
+            }
+            app._OnWindowResize();
+        });
+        document.addEventListener('tabmoved', function(event) {
+            if (event.detail.content.id === "Scene") {
+                app._OnWindowResize(event.detail.parentNode);
+            }
+        });
+        document.addEventListener('Sceneload', function() {
+            console.log("test");
+            app._OnWindowResize();
+        });
         const fov = 60;
         const aspect = canvas.clientWidth / canvas.clientHeight;
         const near = 1.0;
@@ -52,24 +66,23 @@ class Window {
         light.shadow.camera.top = 100;
         light.shadow.camera.bottom = -100;
         this._scene.add(light);
-
-        light = new THREE.AmbientLight(0x101010);
+        light = new THREE.AmbientLight(0x101010, 3);
         this._scene.add(light);
-
+        
         const controls = new OrbitControls(
             this._camera, this._threejs.domElement);
         controls.target.set(0, 20, 0);
         controls.update();
+        
         const plane = new THREE.Mesh(
             new THREE.PlaneGeometry(100, 100, 10, 10),
             new THREE.MeshStandardMaterial({
-                color: 0xFFFFFF,
+                color: 0xFFFFFFF,
             }));
         plane.castShadow = false;
         plane.receiveShadow = true;
         plane.rotation.x = -Math.PI / 2;
         this._scene.add(plane);
-
         const box = new THREE.Mesh(
             new THREE.BoxGeometry(2, 2, 2),
             new THREE.MeshStandardMaterial({
@@ -79,13 +92,17 @@ class Window {
         box.castShadow = true;
         box.receiveShadow = true;
         this._scene.add(box);
-        console.log('hm');
         this.draw();
-    }
-    _OnWindowResize() {
-        this._camera.aspect = canvas.parentElement.clientWidth / canvas.parentElement.clientHeight;
+
+
+    } 
+    _OnWindowResize(content) {
+        const parent = content || canvas.parentElement;
+        const width = parent.clientWidth;
+        const height = parent.clientHeight;
+        this._camera.aspect = width / height;
         this._camera.updateProjectionMatrix();
-        this._threejs.setSize(canvas.parentElement.clientWidth, canvas.parentElement.clientHeight);
+        this._threejs.setSize(width, height);
     }
     draw() {
         requestAnimationFrame(() => {
@@ -95,12 +112,6 @@ class Window {
     }
 }
 let app;
-document.addEventListener('Sceneload', function() {
+document.addEventListener('InitialSceneload', function() {
     app = new Window();
-    document.addEventListener('viewresize', function() {
-        app._OnWindowResize();
-    });
-    document.addEventListener('tabmoved', function() {
-        app._OnWindowResize();
-    })
-})
+});

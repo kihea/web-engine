@@ -41,11 +41,9 @@ body {
 .view .tab-area {
   background-color: #161616;
   width: 100%;
-  height: 30px;
+  height: 45px;
   position: absolute;
-  z-index: 2;
 
-  min-height: max-content;
 }
 .view .tab-area button {
   background-color: inherit;
@@ -54,19 +52,21 @@ body {
   position: absolute;
   border: none;
   outline: none;
-  width: 60px;
-  height: 100%;
+  width: 80px;
+  top: 4px;
+  height: 41px;
+  z-index: auto;
+  
 }
 .view .tab-area button.active {
   background-color: #1f1f1f;
   border-bottom: 1px solid #ccc;
-  z-index: 100;
 }
 .view .content-area {
   position: absolute;
   color: white;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 45px;
   height: 100%;
   display: none;
 }
