@@ -50,7 +50,7 @@ class Window {
 
         this._scene = new THREE.Scene();
 
-        /*let light = new THREE.DirectionalLight(0xFFFFFF, 1.0);
+        let light = new THREE.DirectionalLight(0xFFFFFF, 1.0);
         light.position.set(20, 100, 10);
         light.target.position.set(0, 0, 0);
         light.castShadow = true;
@@ -65,9 +65,8 @@ class Window {
         light.shadow.camera.right = -100;
         light.shadow.camera.top = 100;
         light.shadow.camera.bottom = -100;
-        //this._scene.add(light);
-*/
-        var light = new THREE.AmbientLight(0x101010, 5);
+        this._scene.add(light);
+        light = new THREE.AmbientLight(0x101010, 3);
         this._scene.add(light);
         
         const controls = new OrbitControls(
